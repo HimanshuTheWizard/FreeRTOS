@@ -1,0 +1,36 @@
+!SESSION 2022-12-24 16:28:18.667 -----------------------------------------------
+eclipse.buildId=Version 1.10.1
+java.version=11.0.14.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-12-24 16:28:48.050
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-12-24 16:28:48.175
+!MESSAGE Log4j initialized with config file C:\Drive D\GitHub\FreeRTOS_Workspace\FreeRTOS\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-12-24 16:28:54.220
+!MESSAGE Started RMI Server, listening on port 41338
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-24 16:33:23.915
+!MESSAGE Indexed 'HomeAutomationSystem' (21 sources, 81 headers) in 7.64 sec: 4,387 declarations; 18,251 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0088%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-24 17:26:54.865
+!MESSAGE Indexed 'HomeAutomationSystem' (29 sources, 100 headers) in 2.98 sec: 6,436 declarations; 28,898 references; 0 unresolved inclusions; 1 syntax errors; 1 unresolved names (0.0028%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-24 17:29:29.090
+!MESSAGE Indexed 'HomeAutomationSystem' (29 sources, 100 headers) in 2.58 sec: 6,436 declarations; 28,898 references; 0 unresolved inclusions; 1 syntax errors; 1 unresolved names (0.0028%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-24 17:32:21.246
+!MESSAGE Indexed 'HomeAutomationSystem' (29 sources, 100 headers) in 2.65 sec: 6,436 declarations; 28,898 references; 0 unresolved inclusions; 1 syntax errors; 1 unresolved names (0.0028%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-24 17:34:07.192
+!MESSAGE Indexed 'HomeAutomationSystem' (29 sources, 100 headers) in 2.12 sec: 6,436 declarations; 28,898 references; 0 unresolved inclusions; 1 syntax errors; 1 unresolved names (0.0028%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-24 17:35:57.980
+!MESSAGE Indexed 'HomeAutomationSystem' (29 sources, 100 headers) in 2.28 sec: 6,436 declarations; 28,898 references; 0 unresolved inclusions; 1 syntax errors; 1 unresolved names (0.0028%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-12-24 17:37:02.835
+!MESSAGE Indexed 'HomeAutomationSystem' (29 sources, 100 headers) in 2.07 sec: 6,436 declarations; 28,898 references; 0 unresolved inclusions; 1 syntax errors; 1 unresolved names (0.0028%)
