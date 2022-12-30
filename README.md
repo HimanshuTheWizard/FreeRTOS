@@ -8,6 +8,22 @@ ompiler 					: GCC
 IDE 						: STM32CubeIDE V 1.10.1
 Target Board 				: STM32F407VGTx based Discovery Board
 ===========================================================
+Project File Structure
+===========================================================
+			Application
+			|		|
+			|		|
+			|		CMSIS RTOS API Layer(not used)
+			|		|
+			|		|
+			|	Real Time Kernel (RTOS)
+			|		|
+			|		|
+			CMSIS Core Layer
+					|
+					|
+			Cortex Mx Processor			
+===========================================================
 Steps to create a FreeRTOS based project in STM32CubeIDE
 ===========================================================
 1. Download FreeRTOS Kernel from https://www.freertos.org/a00104.html

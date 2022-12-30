@@ -31,11 +31,38 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+typedef enum
+{
+	e_main_menu_state = 0,
+	e_appliances_control_state,
+	e_default_state
+}E_TaskStates;
+
+typedef struct
+{
+	uint8_t cmd_payload[5];
+	uint32_t len;
+}command_t;
+
+extern UART_HandleTypeDef huart2;
+extern E_TaskStates Curr_state;
+
+extern TaskHandle_t Appliances_task_handle;
+extern TaskHandle_t Command_task_handle;
+extern TaskHandle_t Menu_display_task_handle;
+
+extern QueueHandle_t Command_queue;
+extern QueueHandle_t Print_queue;
+
+
 
 /* USER CODE END ET */
 
@@ -53,6 +80,9 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+extern void Appliances_Handling_Task(void *param);
+extern void Command_Handling_Task(void *param);
+extern void Menu_Display_Handling_Task(void *param);
 
 /* USER CODE END EFP */
 

@@ -39,14 +39,28 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+/*===============Task Handlers definition==============*/
+TaskHandle_t Appliances_task_handle;
+TaskHandle_t Command_task_handle;
+TaskHandle_t Menu_display_task_handle;
+
+/*===============Queue Handlers definition==============*/
+QueueHandle_t Command_queue;
+QueueHandle_t Print_queue;
+
+/*===============Other variables definition==============*/
+static volatile uint8_t User_data;
+E_TaskStates Curr_state = e_main_menu_state;
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -63,7 +77,8 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  BaseType_t status;
+  HAL_StatusTypeDef uart_status;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -84,8 +99,33 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  /*===============Creating tasks==============*/
+  status = xTaskCreate(Appliances_Handling_Task, "Appliances_Handling", 200, NULL, 2, &Appliances_task_handle);
+  configASSERT(pdPASS == status);
 
+  status = xTaskCreate(Command_Handling_Task, "Command_Handling", 200, NULL, 2, &Command_task_handle);
+  configASSERT(pdPASS == status);
+
+  status = xTaskCreate(Menu_Display_Handling_Task, "Menu_Display_Handling", 200, NULL, 2, &Menu_display_task_handle);
+  configASSERT(pdPASS == status);
+
+  /*===============Creating queues==============*/
+  Command_queue = xQueueCreate(10u, sizeof(char));
+  configASSERT(NULL != Command_queue);
+
+  Print_queue = xQueueCreate(10u, sizeof(char));
+  configASSERT(NULL != Print_queue);
+
+  /*===============Enabling UART reception in IT mode==============*/
+  uart_status = HAL_UART_Receive_IT(&huart2, (uint8_t *)&User_data, 1u);
+  if(HAL_OK == uart_status)
+  {
+	  //Do something
+  }
+
+  vTaskStartScheduler();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -143,6 +183,39 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
 }
 
 /**
@@ -284,7 +357,63 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+/*========================================
+ * Return Value : None
+ * Parameters : UART handler pointer
+ * Description : This callback function shall be called each time a data byte is received over UART interrupt.
+ * ========================================*/
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	uint8_t dummy_data;
+	BaseType_t status;
+	HAL_StatusTypeDef uart_status;
+	/*Check if command queue is full*/
+	if(pdTRUE == xQueueIsQueueFullFromISR(Command_queue))
+	{
+		/*If queue is full and last received byte represents new line which means end of command*/
+		if(User_data == '\n')
+		{
+			/*last data byte is taken out and new line character is put at last spot*/
+			status = xQueueReceiveFromISR(Command_queue, (void *)&dummy_data, NULL);
+			if(pdPASS == status)
+			{
+				status = xQueueSendFromISR(Command_queue, (void *)&User_data, NULL);
+				if(pdPASS != status)
+				{
+					//Do something
+				}
+			}
+			else
+			{
+				//do something
+			}
+		}
+	}
+	else
+	{
+		/*Just enqueue the data byte if queue is not full*/
+		status = xQueueSendFromISR(Command_queue, (void *)&User_data, NULL);
+		if(pdPASS != status)
+		{
+			//Do something
+		}
+	}
+	if(User_data == '\n')
+	{
+		/*Once whole command has been received, send a notification to command handling task to handle the command received*/
+		status = xTaskNotifyFromISR(Command_task_handle, 0, eNoAction, NULL);
+		if(pdPASS != status)
+		{
+			//Do something
+		}
+	}
+	/*Enable the UART reception for next byte in interrupt mode*/
+	uart_status = HAL_UART_Receive_IT(&huart2, (uint8_t *)&User_data, 1u);
+	if(HAL_OK == uart_status)
+	{
+	  //Do something
+	}
+}
 /* USER CODE END 4 */
 
 /**

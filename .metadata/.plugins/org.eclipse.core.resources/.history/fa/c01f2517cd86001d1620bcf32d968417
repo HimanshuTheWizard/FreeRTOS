@@ -1,0 +1,93 @@
+/*
+ * task_handler.c
+ *
+ *  Created on: Dec 25, 2022
+ *      Author: Himanshu Mishra
+ */
+#include "task_handler.h"
+
+const char *Invalid_msg = "/=======INVALID ENTRY=======/\n";
+/*========================================
+ * Return Value :
+ * Parameters :
+ * Description :
+ * ========================================*/
+void Appliances_Handling_Task(void *param)
+{
+
+}
+
+/*========================================
+ * Return Value :
+ * Parameters :
+ * Description :
+ * ========================================*/
+void Command_Handling_Task(void *param)
+{
+	xTaskNotifyWait(0, 0, (uint8_t *)&cmd, portMAX_DELAY);
+}
+
+/*========================================
+ * Return Value :
+ * Parameters :
+ * Description :
+ * ========================================*/
+void Menu_Display_Handling_Task(void *param)
+{
+	BaseType_t queue_status;
+	uint8_t cmd;
+	uint8_t valid_entry = 0;
+	const char *menu_msg = "===========================\n"
+						   "|           Menu          |\n"
+						   "===========================\n"
+						   "LED Control           --->0\n"
+			               "Exit                  --->1\n"
+						   "Enter your choice: ";
+	while(1)
+	{
+		queue_status = xQueueSend(print_queue, &menu_msg , portMAX_DELAY);
+		configASSERT(pdPASS == queue_status);
+		xTaskNotifyWait(0, 0, (uint8_t *)&cmd, portMAX_DELAY);
+
+		if(cmd == '0')
+		{
+			curr_state = e_appliances_control_state;
+			xTaskNotify(Appliances_Handling_Task, 0, eNoAction);
+			xTaskNotifyWait(0, 0, NULL, portMAX_DELAY);
+		}
+		else if(cmd == '1')
+		{
+			//update the state
+			// Need to implement this part
+			xTaskNotifyWait(0, 0, NULL, portMAX_DELAY);
+		}
+		else
+		{
+			queue_status = xQueueSend(print_queue, &Invalid_msg , portMAX_DELAY);
+			configASSERT(pdPASS == queue_status);
+		}
+	}
+}
+
+/*========================================
+ * Return Value :
+ * Parameters :
+ * Description :
+ * ========================================*/
+void Print_Handling_Task(void *param)
+{
+	uint8_t *msg = NULL;
+	BaseType_t queue_status;
+	HAL_StatusTypeDef UART_status;
+	while(1)
+	{
+		queue_status = xQueueReceive(print_queue, msg, portMAX_DELAY);
+		if(pdPASS == queue_status)
+		{
+			UART_status = HAL_UART_Transmit(&huart2, msg, strlen((char *)msg), HAL_MAX_DELAY);
+		}
+		configASSERT(UART_status == HAL_OK);
+	}
+}
+
+

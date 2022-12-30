@@ -27,6 +27,18 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/FreeRTOS.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/HomeAutomationSystem/Core/Inc/FreeRTOSConfig.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/projdefs.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/portable.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/deprecated_definitions.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/mpu_wrappers.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/task.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/list.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/queue.h \
+ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/task.h \
  C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/HomeAutomationSystem/Core/Inc/stm32f4xx_it.h
 C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/HomeAutomationSystem/Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -56,4 +68,16 @@ C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/HomeAutomationSystem/Core/Inc/stm
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/FreeRTOS.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/HomeAutomationSystem/Core/Inc/FreeRTOSConfig.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/projdefs.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/portable.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/deprecated_definitions.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F/portmacro.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/mpu_wrappers.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/task.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/list.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/queue.h:
+C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/Common/ThirdParty/FreeRTOS/include/task.h:
 C:/Drive\ D/GitHub/FreeRTOS_Workspace/FreeRTOS/HomeAutomationSystem/Core/Inc/stm32f4xx_it.h:

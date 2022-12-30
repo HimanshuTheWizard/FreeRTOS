@@ -1,0 +1,15 @@
+/*
+ * task_handler.h
+ *
+ *  Created on: Dec 25, 2022
+ *      Author: Himanshu Mishra
+ */
+
+#ifndef INC_TASK_HANDLER_H_
+#define INC_TASK_HANDLER_H_
+
+void Appliances_Handling_Task(void *param);
+void Command_Handling_Task(void *param);
+void Menu_Display_Handling_Task(void *param)
+
+#endif /* INC_TASK_HANDLER_H_ */

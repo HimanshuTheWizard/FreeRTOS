@@ -1,0 +1,16 @@
+/*
+ * task_handler.c
+ *
+ *  Created on: Dec 25, 2022
+ *      Author: Himanshu Mishra
+ */
+
+/*========================================
+ * Return Value :
+ * Parameters :
+ * Description :
+ * ========================================*/
+void Appliances_Handling_Task(void *param)
+{
+
+}
