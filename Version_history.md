@@ -15,5 +15,11 @@ Concepts Used:
 4. Task handling
 5. Scheduling
 6. Notification APIs
+===========================================================
+Version: V 1.1
+Date: 30-12-2022
+===========================================================
+Changes:
+Base project has been created which is open for testing
 
 
