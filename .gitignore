@@ -13,3 +13,8 @@ ToDo.txt
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 *.log
 .metadata/.plugins/org.eclipse.cdt.core/HomeAutomationSystem.1671895990477.pdom
+.metadata/.plugins/org.eclipse.cdt.ui/global-build.log
+.metadata/.plugins/org.eclipse.cdt.ui/HomeAutomationSystem.build.log
+.metadata/.plugins/org.eclipse.cdt.ui/global-build.log
+.metadata/.plugins/org.eclipse.cdt.ui/HomeAutomationSystem.build.log
+.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
