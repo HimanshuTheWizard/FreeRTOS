@@ -1,7 +1,0 @@
-23:09:32 **** Build of configuration Debug for project HomeAutomationSystem ****
-make -j4 all 
-arm-none-eabi-size   HomeAutomationSystem.elf 
-   text	   data	    bss	    dec	    hex	filename
-  24820	     32	  78832	 103684	  19504	HomeAutomationSystem.elf
-Finished building: default.size.stdout
- 
